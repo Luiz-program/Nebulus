@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebulus</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+    /* Estilo do texto de offline */
+    .offline-text {
+        font-size: 3rem;
+        font-weight: bold;
+        background-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+        background-size: 300% 300%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: rainbow 3s linear infinite;
+    }
+
+    @keyframes rainbow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+
+   <!-- Fontes: -->
+   <link href="https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
+
+
+    <!-- Incluindo o Color Thief -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
+    
+    <link rel="icon" href="https://icones.pro/wp-content/uploads/2021/04/icone-spotify-violet-300x300.png" type="image/x-icon">
+</head>
+<body>
+
+    <video muted loop id="video-background">
+        <source src="Material/Companhia Letal  Lethal Company  Iron Master.mp4" type="video/mp4">
+        Seu navegador não suporta o vídeo.
+    </video>
+
+<!-- Barra de Pesquisa -->
+<div id="search" style="background: none; align-items: center; display: flex; justify-content: center; margin-top: 20px;">
+
+<input type="text" style="background: none;" id="searchBar" placeholder="Oque alegra seus ouvidos?" oninput="pesquisar()"/><br>
+
+</div>
+<p id="bar" class="bar"></p>
+<p id="down" class="bar"></p>
+
+    <br><br><br>
+
+    <p id="usName" class="name" style="color: red;"></p>
+
+<div id="content" class="content">
+    
+    <div id="carousel-container" class="carousel-container">
+        <button class="anuncio" id="anuncio" style="color: black; background: none; border: none;" onclick="anuncio()">X</button><br>
+    
+        <a style="text-decoration: none; color: rgb(255, 0, 0);" href="https://www.mcdonalds.com.br/" target="_blank">
+            <div class="carousel-slide">
+                <img id="anuncio-logo" src="https://mcd-landings-l-statics.appmcdonalds.com/uploads-live/Banner_Casquinha_720x450_f9deb0b30c.png" alt="Falha ao carregar foto do anuncio">
+                <p class="anuncio">Uma Nova Explosão De Sabores <strong>Lhe Aguarda! 🍦</strong></p>
+            </div>
+        </a>
+    
+        <a style="text-decoration: none; color: rgb(255, 0, 0);" href="https://www.burgerking.com.br/" target="_blank">
+            <div class="carousel-slide">
+                <img src="https://d3sn2rlrwxy0ce.cloudfront.net/BannerSiteWeb_TASTE.png?mtime=20250108115417&focal=none" alt="Falha ao carregar foto do anuncio">
+                <p class="anuncio">Os Melhores Burgers São <strong>Feitos No Fogo! 🔥</strong></p>
+            </div>
+        </a>
+    
+        <!-- Barra de progresso -->
+        <div class="progress-bar2">
+            <div class="progress2" id="progress2"></div>
+        </div>
+    </div>
+<div id="lateral">
+<div style="display: flex;" class="pop" id="musicas">
+
+<h2 style="color: white;" id="categoria">Em alta no Nebulus:</h2>
+
+<!--Botões de músicas-->
+<button class="musicbtn" onclick="mudarMusica('1')"><img src="https://th.bing.com/th/id/OIP.eieU2Pf0CBzvtdR_L74OdQHaHa?rs=1&pid=ImgDetMain"><br>SPOOKY</button>
+<button class="musicbtn" onclick="mudarMusica('2')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/70/7f/d9/707fd990-ab03-c28a-ee1d-9005ac77ed58/artwork.jpg/1200x1200bf-60.jpg"><br>Fall Asleep</button>
+<button class="musicbtn" onclick="mudarMusica('3')"><img src="https://m.media-amazon.com/images/I/51+lpcg-DGL._UXNaN_FMjpg_QL85_.jpg"><br>Welcome Home</button>
+<button class="musicbtn" onclick="mudarMusica('4')"><img src="https://i1.sndcdn.com/artworks-dBPml1DnccTWMjZS-ASdDzw-t500x500.jpg"><br>Forever</button>
+
+<div id="extra">
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('5')"><img src="https://i.scdn.co/image/ab67616d0000b273ad7bf73940435123b3435cd2"><br>Montagem Sombra Estelar 1.0</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('6')"><img src="https://i1.wp.com/fontmeme.com/images/undertale-font.jpg"><br>Fallen Down</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('7')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c3/3d/f1/c33df11e-1244-3f80-672c-9b7f88010f17/1963620475841_cover.jpg/1200x1200bf-60.jpg"><br>snowfall</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('8')"><img src="https://wp.hnhh.com/wp-content/uploads/2023/05/Metro-Boomin-Nav-A-Boogie-Wit-da-Hoodie-w-Swae-Lee-Calling-Spider-Man-Across-the-Spider-Verse.jpg"><br>Am I Dreaming</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('9')"><img src="https://i.scdn.co/image/ab67616d0000b273e4d00d731d05f45d8026628c"><br>Foi Assim Que O Batman Morreu</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('10')"><img src="https://i.scdn.co/image/ab67616d0000b273639c5bb67502edf28e722dd1"><br>So Low</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('11')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/50/5f/2a/505f2abe-950e-1462-95ef-3505c22cb33a/1963622745058_cover.jpg/1200x1200bf-60.jpg"><br>Blue Horizon Funk</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('12')"><img src="https://i.scdn.co/image/ab67616d0000b273e87de16fd8ca422e16e82bd9"><br>Companhia Letal</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('13')"><img src="Material/Solução Absoluta   Murder Drones (Nightcore) - Iron Master.jpg"><br>Solução Absoluta | Murder Drones.</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('14')"><img src="https://images.genius.com/e7f144e6051f1c3240eb64e5cb75e559.1000x1000x1.png"><br>Sono Profundo | Poppy Playtime (Capítulo 3).</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('15')"><img src="https://th.bing.com/th/id/OIP.skhw4HJD8MLCRx9N3LzOjAHaHa?rs=1&pid=ImgDetMain"><br>My Ordinary Life</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('16')"><img src="https://i.scdn.co/image/ab67616d0000b2733a4d8ae3b8341d1ca816d874"><br>Sleep Well</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('17')"><img src="https://lh3.googleusercontent.com/fQRVEW7qwddapvxKkUuOLotcuEjhpsoUnMxBDZeXfs7Cd08Yv7qbKoXOk5vyc-HrgisbFz02c-6t4sOG"><br>Se Paciente Funk</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('18')"><img src="Material/REINDEER - Dj Samir.jpg"><br>REINDEER</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('19')"><img src="https://lh3.googleusercontent.com/mt4uKXu87KcKrs-yXI0LhKvXiZNsOPx1kYh7HeU3IIe9MsFJESfz-bZowd99ExqAqFl3FJ7U_SUHBss"><br>Killing Fields</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('20')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/8b/e9/cf/8be9cf88-a980-52c5-fef0-65070fdbd744/693887118366.jpg/1200x1200bf-60.jpg"><br>New Jeans (Jersey Club)</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('21')"><img src="https://cdn-images.dzcdn.net/images/cover/beeb846d621625fdbe093aabaad6a849/500x500.jpg"><br>BOUNCE FUNK</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('22')"><img src="https://static.qobuz.com/images/covers/oc/4d/k00mfn8pk4doc_600.jpg"><br>Cuando Se Te Moja La Tarea</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('23')"><img src="https://images.genius.com/80a95640b6945c14bc152fde17cfd1e9.1000x1000x1.jpg"><br>Cuando Se Te Moja La Tarea 2</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('24')"><img src="https://i1.sndcdn.com/artworks-6rEA9E6Vw65C-0-t500x500.png"><br>JOKING</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('25')"><img src="https://f4.bcbits.com/img/a0097746462_10.jpg"><br>A1 - It's just a burning memory</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('26')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/68/e3/44/68e344e5-411b-a6bb-5beb-85f5e93ec792/199066739167.jpg/800x800cc.jpg"><br>MONTAGEM LADRAO</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('27')"><img src="Material/TAKEN - DJ Samir.jpg"><br>TAKEN</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('28')"><img src="https://cdn-images.dzcdn.net/images/cover/58b457e0df4ad9fb235e8702dfccde7d/0x1900-000000-80-0-0.jpg"><br>CADDILAC!</button>
+<button class="musicbtn" style="display: none;" onclick="mudarMusica('29')"><img src="https://cdn-images.dzcdn.net/images/cover/58b457e0df4ad9fb235e8702dfccde7d/0x1900-000000-80-0-0.jpg"><br>BUG ZAP</button>
+
+
+</div>
+<br>
+</div>
+
+<div id="relax" class="pop">
+
+    <h2 style="color: white;" id="categoria">Relax:</h2>
+
+    <button class="musicbtn" onclick="mudarMusica('6')"><img src="https://i1.wp.com/fontmeme.com/images/undertale-font.jpg"><br>Fallen Down</button>
+    <button class="musicbtn" onclick="mudarMusica('7')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c3/3d/f1/c33df11e-1244-3f80-672c-9b7f88010f17/1963620475841_cover.jpg/1200x1200bf-60.jpg"><br>snowfall</button>
+    <button class="musicbtn" onclick="mudarMusica('8')"><img src="https://wp.hnhh.com/wp-content/uploads/2023/05/Metro-Boomin-Nav-A-Boogie-Wit-da-Hoodie-w-Swae-Lee-Calling-Spider-Man-Across-the-Spider-Verse.jpg"><br>Am I Dreaming</button>
+    <button class="musicbtn" onclick="mudarMusica('15')"><img src="https://th.bing.com/th/id/OIP.skhw4HJD8MLCRx9N3LzOjAHaHa?rs=1&pid=ImgDetMain"><br>My Ordinary Life</button>
+
+
+
+</div>
+</div>
+<div class="lateral">
+
+    <div id="sad" class="pop">
+
+        <h2 style="color: white;" id="categoria">Sad:</h2>
+    
+        <button class="musicbtn" onclick="mudarMusica('10')"><img src="https://i.scdn.co/image/ab67616d0000b273639c5bb67502edf28e722dd1"><br>So Low</button>
+        <button class="musicbtn" onclick="mudarMusica('6')"><img src="https://i1.wp.com/fontmeme.com/images/undertale-font.jpg"><br>Fallen Down</button>
+        <button class="musicbtn" onclick="mudarMusica('7')"><img src="https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/c3/3d/f1/c33df11e-1244-3f80-672c-9b7f88010f17/1963620475841_cover.jpg/1200x1200bf-60.jpg"><br>snowfall</button>
+
+    </div>
+
+</div>
+
+<br><br><br><br><br><div class="pop">
+
+<h1 style="color: white;">Notas Do Programador:</h1>
+<p style="color: rgb(205, 205, 205);">Olá Aqui é o programador! E este é meu site Nebulus! oque achou? Espero que tenha gostado! :) Se busca alguma musica que não tem no Nebulus, me avise! Estarei sempre atualizando o site! Obrigado por usar o Nebulus! Me siga no YouTube! Se voc~e quer saber mais sobre mim e meus projetos acesse <a style="color: #8c00ff;" href="https://luweb.netlify.app" target="_blank" rel="noopener noreferrer">luweb.netlify.app</a></p>
+
+<h2 style="color: white;">Para o(os) Programador(res):</h2>
+<p style="color: rgb(205, 205, 205);">Adicionar Simbolização de musica explicita e opção de ocultar estas musicas caso o usuario deseje. e adicionar um sistema de login para salvar as musicas favoritas do usuario, fazer playlists e etc...</p>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zain&display=swap" rel="stylesheet">
+    <style>
+        .tiktok-profile {
+            width: auto;  /* Ajuste o valor em % para tornar o componente responsivo */
+            max-width: 400px; /* Limita a largura máxima da div */
+            height: 200px;
+            min-height: 200px; /* Define a altura mínima da div */
+            border-radius: 10px;
+            display: flex;
+            gap: 20px; /* Espaço entre os elementos */
+            border: 2px solid rgb(156, 156, 156);
+            background-color: #ffffff;
+            transition: all 0.3s;
+            opacity: 0.5;
+        }
+
+        .tiktok-profile:hover {
+            border: 2px solid rgb(255, 0, 111);
+            opacity: 1;
+        }
+
+        .tiktok-profile #perfil {
+            width: 50%; /* Ajusta a imagem para ocupar metade do espaço disponível */
+            height: auto;
+            border-radius: 50%;
+            transition: all 0.3s;
+            opacity: 0.8;
+        }
+
+        .tiktok-profile #perfil:hover {
+            border-radius: 10px;
+            opacity: 1;
+            border-right: 2px solid rgb(255, 0, 111);
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;  /* Permite que a div .info ocupe o restante do espaço */
+        }
+
+        .tiktok-profile .username {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem; /* Ajuste o tamanho do texto com unidade relativa */
+            font-weight: bold;
+            color: rgb(35, 35, 35);
+            border-radius: 5px;
+        }
+
+        .tiktok-profile .name {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 2rem; /* Ajuste o tamanho do texto com unidade relativa */
+            font-weight: bold;
+            color: rgb(35, 35, 35);
+            border-radius: 5px;
+        }
+
+        .tiktok-profile .followers {
+            font-family: 'Zain', sans-serif;
+            font-size: 1rem; /* Ajuste o tamanho do texto com unidade relativa */
+            color: rgb(35, 35, 35);
+            border-radius: 5px;
+            text-decoration: underline rgb(255, 0, 111);
+        }
+
+        #tiktok-link {
+            text-decoration: none;
+        }
+
+        #tiktok-logo {
+            width: 25px;
+            height: auto;
+            transition: all 0.3s;
+            opacity: 0.8;
+            transform: scale(1);
+        }
+
+        #tiktok-logo:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .tiktok-profile #tiktok-logo {
+            opacity: 0;
+            animation: none;
+        }
+
+        .tiktok-profile:hover #tiktok-logo {
+            opacity: 1;
+            animation: rotate 1.5s infinite;
+            animation-delay: 1s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Estilo para modo escuro */
+        @media (prefers-color-scheme: dark) {
+            .tiktok-profile {
+                background-color: #000000;
+            }
+
+            .tiktok-profile .username {
+                color: rgb(192, 192, 192);
+            }
+            .tiktok-profile .followers {
+                color: rgb(126, 126, 126);
+            }
+        }
+    </style>
+</head>
+
+<a href="https://www.youtube.com/@caixa-brasil" target="_blank" rel="noopener noreferrer" id="tiktok-link">
+    <div class="tiktok-profile" id="tiktok-profile">
+
+    </div>
+</a>
+<script>
+
+// Função para atualizar a imagem do logo com base no link
+function updateLogo() {
+    var link = document.getElementById('tiktok-link').href;  // Obtém o href do link
+    var card = document.getElementById('tiktok-profile');  // Seleciona a imagem do logo
+
+    if (link.includes('tiktok')) {
+        card.innerHTML = `
+        <!-- Imagem de perfil -->
+        <img src="https://yt3.googleusercontent.com/XHFY-Hei8xYhYfrGsyaSOVf0UM9eWEj_uhDlwkG7o-PVGieIE7schRjHr2Kxrx-IL1lRNpODnw=s160-c-k-c0x00ffffff-no-rj" alt="Foto de Perfil" id="perfil">
+        
+        <!-- Informações do perfil -->
+        <div class="info">
+            <div class="username"><h5>{Nome de usuario alterado dinamicamente}</h5></div>
+            <div class="followers"><p>Seguindo: {Inserir seguidores!}</p></div>
+            <div class="followers"><p>Seguidores: {Inserir seguidores!}</p></div>
+            <div class="followers"><p>Curtidas: {Inserir curtidas!}</p></div>
+            <img src="" alt="Logo do TikTok" id="tiktok-logo">
+        </div>
+        `;
+        var logo = document.getElementById('tiktok-logo');  // Seleciona a imagem do logo
+        logo.src = 'https://pngimg.com/uploads/tiktok/tiktok_PNG4.png';  // Atualiza a imagem para o logo do TikTok
+    } else if (link.includes('youtube')) {
+        card.innerHTML = `
+        <!-- Imagem de perfil -->
+        <img src="https://yt3.googleusercontent.com/XHFY-Hei8xYhYfrGsyaSOVf0UM9eWEj_uhDlwkG7o-PVGieIE7schRjHr2Kxrx-IL1lRNpODnw=s160-c-k-c0x00ffffff-no-rj" alt="Foto de Perfil" id="perfil">
+        
+        <!-- Informações do perfil -->
+        <div class="info">
+            <div class="username"><h5>{Nome de usuario alterado dinamicamente}</h5></div>
+            <div class="followers"><p>Inscritos: 95</p></div>
+            <div class="followers"><p>Videos: 167</p></div>
+            <img src="" alt="Logo do Youtube" id="tiktok-logo">
+        </div>
+        `;
+        var logo = document.getElementById('tiktok-logo');  // Seleciona a imagem do logo
+        logo.src = 'https://cdn.freebiesupply.com/logos/large/2x/youtube-icon-logo-png-transparent.png';  // Atualiza a imagem para o logo do YouTube
+    } else if (link.includes('discord')) {
+        card.innerHTML = `
+        <!-- Imagem de perfil -->
+        <img src="https://yt3.googleusercontent.com/XHFY-Hei8xYhYfrGsyaSOVf0UM9eWEj_uhDlwkG7o-PVGieIE7schRjHr2Kxrx-IL1lRNpODnw=s160-c-k-c0x00ffffff-no-rj" alt="Foto de Perfil" id="perfil">
+        
+        <!-- Informações do perfil -->
+        <div class="info">
+            <div class="name"><h5>{inserir Nome do servidor}</h5></div>
+            <div class="followers"><p>Membros do servidor: {Inserir quantidade de membros!}</p></div>
+            <img src="" alt="Logo do Discord" id="tiktok-logo">
+        </div>
+        `;
+        var logo = document.getElementById('tiktok-logo');  // Seleciona a imagem do logo
+        logo.src = 'https://static.vecteezy.com/system/resources/previews/018/930/500/non_2x/discord-logo-discord-icon-transparent-free-png.png';  // Atualiza a imagem para o logo do YouTube
+    } 
+}
+// Chama a função para atualizar a imagem do logo
+updateLogo();
+    // Função para extrair o nome do usuário a partir do href
+    function updateUsername() {
+        var link = document.getElementById('tiktok-link').href;  // Obtém o href do link
+        var username = link.split('@')[1];  // Divide a URL e pega a parte após '@'
+        var usernameDiv = document.querySelector('.username');  // Seleciona a div do nome de usuário
+        usernameDiv.textContent = username;  // Atualiza o conteúdo da div com o nome do usuário
+    }
+
+    // Chama a função para atualizar o nome de usuário
+    updateUsername();
+</script>
+
+
+</div>
+    
+</div>
+
+<div>
+
+
+<pre style="translate: none;" onclick="letra" id="lyrics">
+
+    Selecione uma música para ver a letra!
+    <!--isso será as letras-->
+
+</pre><br><br><br><br><br><br><br>
+
+<div id="fotoDiv">
+
+  <h3>Configurar Perfil</h3>
+
+  <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="handleFileUpload(event)">
+  <button id="upload" style="border-radius: 5px; border-color: #8c00ff; background: none; color: #520096;" onclick="document.getElementById('fileInput').click()">Upload de Nova Foto</button>
+  <button id="close" style="color: black; background: none; border: none;" onclick="perfilC()">X</button><br>
+
+  <img id="per" class="perfil" src="https://static.vecteezy.com/system/resources/previews/010/159/990/non_2x/people-icon-sign-symbol-design-free-png.png" alt="Foto de Perfil" style="width: 100px; height: 100px; display: none;">
+
+  <h3 id="h3Text">Foto Atual:</h3>
+
+  <br>  <br>  <br>  <br>
+
+</div>
+
+</div>
+
+<button class="button" id="cardbtn" onclick="card()"><</button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="container image-container" id="container">
+            <img id="musiclogo" src="teste" alt="Falha ao carregar foto" crossOrigin="anonymous">
+            <video id="musicvideo" muted disablePictureInPicture style="display: none;">
+                <source src="Material/InShot_20250123_095742240.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="sidebar-content" id="card-content">
+            <h2 id="musicname"><strong>Procure algo para ouvir.</strong></h2>
+            <p id="musicartist">Algum artista que curte talvez?</p>
+            
+            <div class="sobre" id="sobre">
+              <p style="font-family: 'Bebas Neue', sans-serif; /* Títulos ou seções com Bebas Neue */color: white; font-size: 30px;"><strong>Sobre o artista:</strong></p>
+              <img id="artistimg" class="artista" src="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/0a/f5/1e/0af51e30-fa8e-1321-5b8c-091ae7dc06b1/640948812510.png/1200x1200bf-60.jpg" width="100px" height="100px" alt="Imagem do artista" style="border-radius: 100%;">
+              <br><p id="msgartist"></p>
+            </div>
+<br>
+            <div class="sobre">
+                <p style="font-family: 'Bebas Neue', sans-serif; /* Títulos ou seções com Bebas Neue */color: white; font-size: 30px;"><strong>Créditos</strong></p>
+                <p id="credits"></p>
+            </div>
+
+        </div><br><br><br><br>
+    </div>
+
+    <div class="control-bar =" id="control" style="border-top: red;">
+        <button id="loopBtn" onclick="loopdamusica()" class="button"><img class="loop" src="https://static.vecteezy.com/system/resources/previews/012/289/507/non_2x/loop-flat-color-outline-icon-free-png.png"></button> <!-- Botão de Loop -->
+        <button id="antRandom" onclick="playPreviousMusic()" class="button"><img class="mic" src="https://cdn-icons-png.flaticon.com/512/181/181669.png"></button>
+        <button id="random" onclick="playRandomMusic()" class="button"><img class="mic" src="https://cdn-icons-png.flaticon.com/512/181/181669.png"></button>
+        <button id="lyricsBtn" onclick="toggleLyrics()" class="button">🎤</button>
+        <button style="display: none;" id="shuffleBtn" class="button"><img class="mic" src="https://static.vecteezy.com/system/resources/previews/009/386/052/original/shuffle-icon-sign-symbol-design-free-png.png"></button>
+    </div>
+
+    <label class="volumeText" for="volume" style="display: none;">volume</label>
+    <input class="volumeBar" id="vol" type="range" id="volume" min="0" max="1" step="0.01" value="1">
+    <br>
+    <button class="button" id="muteButton"><img style="height: auto; width: 20px;" src="https://pngimg.com/uploads/sound/sound_PNG26.png"></button>
+    
+    <button class="button" id="big" onclick="carregarFundo()">Tela Cheia</button>
+    <button id="playPauseBtn" class="button" ><img style="background-color: red;" id="pause img" src="https://th.bing.com/th/id/R.6d930f95dc8b67ba5e9718c741b215a8?rik=rB8CJzVW5c6RZw&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f5%2fPause-Button-Transparent.png&ehk=CLUZKurfYNgywo0XszlmTUrhwRhjyMus1h1yDRmvUxY%3d&risl=&pid=ImgRaw&r=0"></button>
+
+        <!-- Container da barra de progresso e tempos -->
+        <div class="progress-container animacao" id="progress-container">
+            <span style="color: white;" id="currentTime" class="time">0:00</span>
+            <div class="progress-bar">
+                <div id="progress" class="progress"></div>
+            </div>
+            <span style="color: white;" id="totalTime" class="time">0:00</span>
+        </div>
+        
+        <span id="hora"></span>
+        <button class="auto" onclick="letra()">
+        <img style="display: none;border-radius: 10px; position: fixed; bottom: 40px; right: 20px; width: 200px; height: auto;" id="mslogo" src="">
+        </button>
+        <h1 class="fade-in" id="music"></h1>
+<div class="test"></div>
+
+<button style="background: none; border: none;" onclick="perfil();">
+<img class="perfil" id="perfil" src="https://static.vecteezy.com/system/resources/previews/010/159/990/non_2x/people-icon-sign-symbol-design-free-png.png" alt="Foto de Perfil" style="display: block;">
+</button>
+
+<button style="background: none; border: none;" onclick="location.reload()" class="logo" id="button"><img style="background: none;" class="logo" id="img" src="https://icones.pro/wp-content/uploads/2021/04/icone-spotify-violet-300x300.png"><h2 style="background: none;" id="text" class="logo">Nebulus</h2></button>
+
+<audio id="audio" src=""></audio>
+
+
+<script src="MainScript.js"></script>
+
+
+
+
+
+<!-- Verifica se o usuário está offline -->
+<script>
+    function verificarConexao() {
+        if (!navigator.onLine) {
+            document.body.innerHTML = '<div class="offline-text">Você está sem internet! 🚨</div>';
+        }
+    }
+
+    // Verifica a conexão inicial
+    verificarConexao();
+
+    // Adiciona evento para detectar quando a conexão cai
+    window.addEventListener("offline", verificarConexao);
+</script>
+
+</body>
+</html>
